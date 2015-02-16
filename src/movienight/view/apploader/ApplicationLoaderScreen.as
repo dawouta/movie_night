@@ -38,7 +38,6 @@ package movienight.view.apploader
 		
 		public function build():void
 		{
-			Tracer.out();
 			
 			var atlas : TextureAtlas = Constants.COMMON_ATLAS;
 			

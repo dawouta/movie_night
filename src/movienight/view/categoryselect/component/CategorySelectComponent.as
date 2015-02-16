@@ -29,15 +29,23 @@ package movienight.view.categoryselect.component
 		
 		////////////////////////////////////////////////////////////////
 		
+		public function get segmentAngle() : Number 
+		{
+			return 360 / _categories.length;
+		}
+		
+		////////////////////////////////////////////////////////////////
+		
 		public function CategorySelectComponent( categories : Vector.<CategoryVO> )
 		{
 			_categories = categories;
 									
 			_categoryWheel = new Image( drawCategoryTexture() );
 			Utils.centerPivot( _categoryWheel );
-			_categoryWheel.rotation = -deg2rad( ( 360 / categories.length ) * 0.5);
+			_categoryWheel.rotation = -deg2rad( 90 + segmentAngle * 0.5 );
 			_categoryWheel.touchable = false;
 			addChildAt( _categoryWheel,0 );
+			
 			flatten();
 			
 		}
@@ -46,8 +54,8 @@ package movienight.view.categoryselect.component
 		
 		private function drawCategoryTexture() : Texture
 		{
+			var categoryAngleIncrement : Number = segmentAngle;
 			var i : int,
-			categoryAngleIncrement : Number = 360 / _categories.length,
 			categoryIndex : int,
 			angle : Number = 0,
 			angleDif : Number = 0,

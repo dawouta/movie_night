@@ -22,6 +22,8 @@ package movienight.view.categoryselect
 	import starling.text.TextFieldAutoSize;
 	import starling.textures.TextureAtlas;
 	import starling.utils.HAlign;
+	import starling.utils.deg2rad;
+	import starling.utils.rad2deg;
 	
 	public class CategorySelectScreen extends ScreenView
 	{
@@ -176,18 +178,25 @@ package movienight.view.categoryselect
 		
 		public function startSpin( categoryIndex : int ) : void 
 		{
-			var categoryIncrement : Number = ( 360 / _categories.length );
-			var categoryRotationOffset : Number = categoryIncrement * 0.5;
-			var offsetRotation : Number = categoryIncrement * categoryIndex + categoryRotationOffset;
-			var targetRotation : Number = ( 1800 + offsetRotation ) * ( Math.PI / 180 );
 			_currentCategoryText.visible = true;
+			
+			var categoryIncrement : Number = _categorySelectComponent.segmentAngle;
+			var offsetRotation : Number = categoryIncrement * categoryIndex;
+			var targetRotation : Number = deg2rad( 1800 + offsetRotation + 0.1 );
+			var currentIndex : int;
+			var currentRotation : Number = 0;
+			
 			Starling.juggler.tween( _categorySelectComponent, 5, { rotation : targetRotation, transition : Transitions.EASE_IN_OUT,
 				onUpdate : function() : void 
 				{
-					var currentRotation : Number = ( _categorySelectComponent.rotation * ( 180 / Math.PI ) ) % 360;
+					currentRotation = rad2deg( _categorySelectComponent.rotation ) % 360 + ( categoryIncrement * 0.5 );
 					if( currentRotation < 0 ) currentRotation += 360;
-					var currentIndex : int = Math.floor( currentRotation / categoryIncrement );
-					_currentCategoryText.text = _categories[ currentIndex ].name.toUpperCase();
+					currentIndex = Math.floor( currentRotation / categoryIncrement );
+					if( _currentCategoryText.text !== _categories[ currentIndex ].name.toUpperCase() ) 
+					{
+						AudioAssets.play( AudioAssets.SOUND_CATEGORY_WHEEL_TICK );
+						_currentCategoryText.text = _categories[ currentIndex ].name.toUpperCase();
+					}
 				},
 				onComplete : function():void
 				{

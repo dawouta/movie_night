@@ -19,12 +19,17 @@ package
 		[Embed(source = "../media/audio/answer_wrong.mp3")]
 		private static const IncorrectAnswer:Class;
 		
+		[Embed(source = "../media/audio/wheel_category_change.mp3")]
+		private static const CategoryWheelTick:Class;
+		
 		////////////////////////////////////////////////////////////////
 		
 		public static const SOUND_CLICK : String = "clickSound";
 		public static const SOUND_CAMERA_SHUTTER : String = "cameraSound";
 		public static const SOUND_CORRECT : String = "answerCorrectSound";
 		public static const SOUND_INCORRECT : String = "answerIncorrectSound";
+		public static const SOUND_CATEGORY_WHEEL_TICK : String = "categoryWheelTickSound";
+		
 		
 		////////////////////////////////////////////////////////////////
 		
@@ -36,6 +41,7 @@ package
 			sm.addSound( SOUND_CAMERA_SHUTTER, new CameraShutter() as Sound );
 			sm.addSound( SOUND_CORRECT, new CorrectAnswer() as Sound );
 			sm.addSound( SOUND_INCORRECT, new IncorrectAnswer() as Sound );
+			sm.addSound( SOUND_CATEGORY_WHEEL_TICK, new CategoryWheelTick() as Sound );
 		}
 		
 		////////////////////////////////////////////////////////////////
