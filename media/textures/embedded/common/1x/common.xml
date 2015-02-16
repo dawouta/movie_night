@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:d848b6e38417af5b1bcba664477b24c8$ -->
+<TextureAtlas imagePath="common.png">
+    <SubTexture name="answer_button_background_down" x="488" y="2" width="478" height="56" frameX="-4" frameY="-1" frameWidth="486" frameHeight="64"/>
+    <SubTexture name="answer_button_background_up" x="2" y="2" width="484" height="64" frameX="-2" frameY="0" frameWidth="486" frameHeight="64"/>
+    <SubTexture name="answer_button_icon_1" x="397" y="489" width="47" height="47"/>
+    <SubTexture name="answer_button_icon_1_correct" x="348" y="471" width="47" height="47"/>
+    <SubTexture name="answer_button_icon_1_incorrect" x="397" y="440" width="47" height="47"/>
+    <SubTexture name="answer_button_icon_2" x="348" y="422" width="47" height="47"/>
+    <SubTexture name="answer_button_icon_2_correct" x="397" y="391" width="47" height="47"/>
+    <SubTexture name="answer_button_icon_2_incorrect" x="348" y="373" width="47" height="47"/>
+    <SubTexture name="answer_button_icon_3" x="397" y="342" width="47" height="47"/>
+    <SubTexture name="answer_button_icon_3_correct" x="348" y="324" width="47" height="47"/>
+    <SubTexture name="answer_button_icon_3_incorrect" x="402" y="293" width="47" height="47"/>
+    <SubTexture name="application_loader_spinner" x="365" y="138" width="76" height="76"/>
+    <SubTexture name="avatar_border" x="798" y="145" width="144" height="144"/>
+    <SubTexture name="avatar_button_down" x="2" y="761" width="189" height="189" frameX="-8" frameY="-8" frameWidth="205" frameHeight="205"/>
+    <SubTexture name="avatar_button_up" x="756" y="560" width="199" height="199" frameX="-4" frameY="-5" frameWidth="205" frameHeight="205"/>
+    <SubTexture name="camera_frame" x="2" y="186" width="344" height="344"/>
+    <SubTexture name="category_wheel_center" x="456" y="277" width="298" height="298"/>
+    <SubTexture name="category_wheel_indicator_arrow" x="365" y="68" width="87" height="68"/>
+    <SubTexture name="default_button_bg_down" x="478" y="211" width="314" height="64" frameX="-2" frameY="0" frameWidth="316" frameHeight="64"/>
+    <SubTexture name="default_button_bg_up" x="482" y="145" width="314" height="64" frameX="-2" frameY="0" frameWidth="316" frameHeight="64"/>
+    <SubTexture name="icon_arrow" x="443" y="208" width="33" height="29" frameX="-10" frameY="-15" frameWidth="63" frameHeight="63"/>
+    <SubTexture name="icon_camera" x="443" y="179" width="37" height="27" frameX="-8" frameY="-16" frameWidth="63" frameHeight="63"/>
+    <SubTexture name="icon_refresh" x="443" y="138" width="37" height="39" frameX="-9" frameY="-11" frameWidth="63" frameHeight="63"/>
+    <SubTexture name="leaderboard_renderer_bg" x="488" y="60" width="459" height="83" frameX="-4" frameY="-1" frameWidth="467" frameHeight="91"/>
+    <SubTexture name="leaderboard_renderer_rank_bg" x="949" y="110" width="72" height="72"/>
+    <SubTexture name="logo_large" x="756" y="292" width="210" height="266"/>
+    <SubTexture name="round_complete_bottom_renderer_bg" x="2" y="68" width="361" height="116"/>
+    <SubTexture name="round_complete_default_renderer_bg" x="2" y="577" width="273" height="91"/>
+    <SubTexture name="round_result_icon_round_1" x="348" y="270" width="52" height="52"/>
+    <SubTexture name="round_result_icon_round_2" x="402" y="239" width="52" height="52"/>
+    <SubTexture name="round_result_icon_round_3" x="348" y="216" width="52" height="52"/>
+    <SubTexture name="round_result_icon_round_4" x="944" y="238" width="52" height="52"/>
+    <SubTexture name="round_result_icon_round_5" x="944" y="184" width="52" height="52"/>
+    <SubTexture name="round_result_icon_round_correct" x="968" y="56" width="52" height="52"/>
+    <SubTexture name="round_result_icon_round_incorrect" x="968" y="2" width="52" height="52"/>
+</TextureAtlas>

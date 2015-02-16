@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<application xmlns="http://ns.adobe.com/air/application/16.0">
+
+    <id>com.derivco.MovieNight</id>
+	<filename>MovieNight</filename>
+	<name>MovieNight</name>
+	<versionNumber>0.0.101</versionNumber>
+	<versionLabel>alpha 1.0</versionLabel>
+	
+	<initialWindow>
+		<content>[This value will be overwritten by Flash Builder in the output app.xml]</content>
+        <aspectRatio>portrait</aspectRatio>
+        <renderMode>direct</renderMode>
+		<autoOrients>false</autoOrients>
+        <fullScreen>true</fullScreen>
+        <visible>true</visible>
+    </initialWindow>
+
+	<icon>
+		<image29x29>icon_29.png</image29x29>
+		<image58x58>icon_58.png</image58x58>
+		<image60x60>icon_60.png</image60x60>
+		<image72x72>icon_72.png</image72x72>
+		<image76x76>icon_76.png</image76x76>
+		<image100x100>icon_100.png</image100x100>
+		<image120x120>icon_120.png</image120x120>
+		<image144x144>icon_144.png</image144x144>
+		<image152x152>icon_152.png</image152x152>
+	</icon>
+	
+	<android>
+        <manifestAdditions><![CDATA[
+			<manifest android:installLocation="auto">
+			    <uses-permission android:name="android.permission.INTERNET"/>
+			    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+			    <uses-permission android:name="android.permission.CAMERA"/>
+			</manifest>
+			]]></manifestAdditions>
+    </android>
+    
+    <iPhone>
+        <InfoAdditions><![CDATA[
+			<key>UIDeviceFamily</key>
+			<array>
+				<string>1</string>
+			</array>
+		]]></InfoAdditions>
+        <requestedDisplayResolution>high</requestedDisplayResolution>
+    </iPhone>
+    
+</application>

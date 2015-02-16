@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="Ant Prepare Assets" basedir=".">
+	
+	<property environment="env."/>
+	<property name="flex.home" location="${env.FLEX_HOME}"/>
+	<property file="build.properties"/>
+
+	<target name="prepare_all" depends="prepare_common">
+		<echo>All assets prepared</echo>
+	</target>
+
+	<target name="prepare_common" description="Create sprite sheet for shared assets">
+		<antcall target="generate_spritesheet">
+			<param name="filename"     value="common"/>
+			<param name="output.base"  value="${output.embedded}"/>
+		</antcall>
+		<echo>Common assets prepared</echo>
+	</target>
+	
+	<!--________________________________________________________________  Library Functions _________________________________________________________________________-->
+	
+	<target name="generate_spritesheet">
+		<echo>Rendering sprite sheet for: ${filename}</echo>
+		<antcall target="generate_from_images">
+			<param name="resolution"   value="2x"/>
+			<param name="scale"        value="1"/>
+			<param name="filename"     value="${filename}"/>
+			<param name="input.folder" value="${filename}"/>
+			<param name="output.base"  value="${output.base}"/>
+			<param name="output.folder" value="${filename}"/>
+		</antcall>
+	</target>
+	
+	<target name="generate_atf_from_img">
+		<antcall target="downsize_img">
+			<param name="input.folder" 	value="${foldername}"/>
+			<param name="output.folder" value="${foldername}"/>
+			<param name="output.base" 	value="${output.runtime}"/>
+		</antcall>
+		<antcall target="convert_atf">
+			<param name="resolution"	value="2x"/>
+			<param name="input.folder" 	value="${foldername}"/>
+			<param name="output.base" 	value="${output.runtime}"/>
+		</antcall>
+		<antcall target="convert_atf">
+			<param name="resolution"	value="1x"/>
+			<param name="input.folder" 	value="${foldername}"/>
+			<param name="output.base" 	value="${output.runtime}"/>
+		</antcall>
+		<delete file="${output.base}/${foldername}/2x/dummy.xml"/>
+		<delete file="${output.base}/${foldername}/1x/dummy.xml"/>
+		<delete file="${output.base}/${foldername}/1x/${filename}.png"/>
+		<delete file="${output.base}/${foldername}/2x/${filename}.png"/>
+	</target>
+
+	<!-- This assumes the a folder structure with a texture packer *.tps inside named after the output files -->
+	<target name="generate_from_tps">
+		<exec executable="TexturePacker" dir="${input.basedir}/${input.folder}/">
+			<arg line="--data  '${output.base}/${resolution}/${output.folder}/${filename}.xml'"/>
+			<arg line="--sheet '${output.base}/${resolution}/${output.folder}/${filename}.png'"/>
+			<arg line="--scale  ${scale}"/>
+			<arg line=" '${filename}.tps'"/>
+		</exec>
+	</target>
+
+	<target name="generate_from_images">
+		<!-- Need to use files sets because texture packer for win doesn't support file globbing, ie *.png -->
+		<fileset id="fileset" dir="${input.basedir}/${input.folder}" casesensitive="yes">
+			<include name="*.png"/>
+			<include name="*.jpg"/>
+		</fileset>
+		<pathconvert refid="fileset" property="converted"  pathsep="' '"/>
+		<!-- set default value if ant call doesnt' provide any args -->
+		<property name="extra.args" value="" />
+		<exec executable="TexturePacker" dir="${input.basedir}/${input.folder}">
+			<arg line="--data  '${output.base}/${output.folder}/2x/${filename}.xml'"/>
+			<arg line="--sheet '${output.base}/${output.folder}/2x/${filename}.png'"/>
+			<arg line="--scale  ${scale}"/>
+			<arg line="--format sparrow"/>
+			<arg line="--max-size 2048"/>
+			<arg line="--size-constraints POT"/>
+			<arg line="--png-opt-level 4"/>
+			<arg line="--extrude 0"/>
+			<arg line="${extra.args}"/>
+			<arg line="--scale-mode Smooth"/>
+			<arg line="--pack-mode Best" />
+			<arg line="'${converted}'"/>
+			<arg line="--main-extension /2x/"/>
+			<arg line="--autosd-variant 0.5:/1x/"/>
+		</exec>
+	</target>
+
+	<target name="convert_atf" >
+		<mkdir dir="${output.base}/${input.folder}/${resolution}"/>
+		<exec executable="${png2atf.path}" dir="${output.base}/${input.folder}/${resolution}">
+			<arg line="-c"/>
+			<arg line="-n"/>
+			<arg line="0,0"/>
+			<arg line="-i ${filename}.png"/>
+			<arg line="-o ${output.base}/${input.folder}/${resolution}/${filename}.atf"/>
+		</exec>
+	</target>
+
+	<target name="downsize_img">
+		<exec executable="TexturePacker" dir="${input.basedir}/${input.folder}">
+			<arg line="--sheet '${output.base}/${output.folder}/2x/${filename}.png'"/>
+			<arg line="--data  '${output.base}/${output.folder}/2x/dummy.xml'"/>
+			<arg line="--format sparrow"/>
+			<arg line="--png-opt-level 2"/>
+			<arg line="--border-padding 0"/>
+			<arg line="--shape-padding 0"/>
+			<arg line="--scale-mode Smooth"/>
+			<arg line="--size-constraints POT"/>
+			<arg line="'${input.basedir}/${input.folder}/${filename}.png'"/>
+			<arg line="--main-extension /2x/"/>
+			<arg line="--autosd-variant 0.5:/1x/"/>
+		</exec>
+	</target>
+
+</project>
