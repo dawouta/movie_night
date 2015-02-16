@@ -41,6 +41,7 @@ package movienight.view.game.component
 		public function show( isCorrect : Boolean ) : void
 		{
 			_image = new Image( isCorrect ? _correctTexture : _incorrectTexture );
+			AudioAssets.play( isCorrect ? AudioAssets.SOUND_CORRECT : AudioAssets.SOUND_INCORRECT );
 			Utils.centerPivot( _image );
 			_image.alpha = 0;
 			_image.scaleX = _image.scaleY = 0;

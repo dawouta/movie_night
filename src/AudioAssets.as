@@ -13,14 +13,18 @@ package
 		[Embed(source = "../media/audio/take_picture.mp3")]
 		private static const CameraShutter:Class;
 		
-//		[Embed(source = "../media/audio/spin.mp3")]
-//		private static const CategoryWheelSpin:Class;
+		[Embed(source = "../media/audio/answer_correct.mp3")]
+		private static const CorrectAnswer:Class;
+		
+		[Embed(source = "../media/audio/answer_wrong.mp3")]
+		private static const IncorrectAnswer:Class;
 		
 		////////////////////////////////////////////////////////////////
 		
 		public static const SOUND_CLICK : String = "clickSound";
 		public static const SOUND_CAMERA_SHUTTER : String = "cameraSound";
-//		public static const CATEGORY_WHEEL_SPIN : String = "categroyWheelSpin";
+		public static const SOUND_CORRECT : String = "answerCorrectSound";
+		public static const SOUND_INCORRECT : String = "answerIncorrectSound";
 		
 		////////////////////////////////////////////////////////////////
 		
@@ -30,8 +34,8 @@ package
 			
 			sm.addSound( SOUND_CLICK, new Click() as Sound );
 			sm.addSound( SOUND_CAMERA_SHUTTER, new CameraShutter() as Sound );
-//			sm.addSound( CATEGORY_WHEEL_SPIN, new CategoryWheelSpin() as Sound );
-			
+			sm.addSound( SOUND_CORRECT, new CorrectAnswer() as Sound );
+			sm.addSound( SOUND_INCORRECT, new IncorrectAnswer() as Sound );
 		}
 		
 		////////////////////////////////////////////////////////////////

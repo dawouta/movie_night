@@ -11,6 +11,7 @@ package movienight.view.categoryselect.component
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.textures.Texture;
+	import starling.utils.deg2rad;
 	
 	public class CategorySelectComponent extends Sprite
 	{
@@ -34,9 +35,9 @@ package movienight.view.categoryselect.component
 									
 			_categoryWheel = new Image( drawCategoryTexture() );
 			Utils.centerPivot( _categoryWheel );
+			_categoryWheel.rotation = -deg2rad( ( 360 / categories.length ) * 0.5);
 			_categoryWheel.touchable = false;
 			addChildAt( _categoryWheel,0 );
-			
 			flatten();
 			
 		}

@@ -43,8 +43,7 @@ package movienight.view
 		{
 			var bg:Image =  new Image( Assets.getTexture("BackgroundTexture") );
 			bg.height = Constants.APP_HEIGHT;
-			bg.scaleX = bg.scaleY;
-			bg.x = (Constants.APP_WIDTH - bg.width) * 0.5;
+			bg.x = ( Constants.APP_WIDTH - bg.width ) >> 1;
 			addChild(bg);
 		}
 		
