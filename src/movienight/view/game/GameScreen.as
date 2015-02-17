@@ -196,6 +196,7 @@ package movienight.view.game
 		
 		override public function dispose():void
 		{
+			signalAnswer.removeAll();
 			while( numChildren > 0 ) removeChildAt(0, true);
 			super.dispose();
 		}
